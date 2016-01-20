@@ -1,20 +1,17 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2016-01-13T21:31:32
-#
-#-------------------------------------------------
 
-QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui sql widgets
+INCLUDEPATH += .
 
 TARGET = QTMagazine
 TEMPLATE = app
-
-
-SOURCES += main.cpp\
-        start.cpp
-
-HEADERS  += start.h
-
+SOURCES += main.cpp start.cpp sqlconnector.cpp
+HEADERS  += start.h sqlconnector.h
 FORMS    += start.ui
+
+wince {
+    CONFIG(debug, debug|release):sqlPlugins.files = $$QT_BUILD_TREE/plugins/sqldrivers/*d4.dll
+    CONFIG(release, debug|release):sqlPlugins.files = $$QT_BUILD_TREE/plugins/sqldrivers/*[^d]4.dll
+    sqlPlugins.path = sqldrivers
+    DEPLOYMENT += sqlPlugins
+}

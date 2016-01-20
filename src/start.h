@@ -1,7 +1,9 @@
 #ifndef START_H
 #define START_H
 
-#include <QMainWindow>
+
+#include <sqlconnector.h>
+
 
 namespace Ui {
 class start;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::start *ui;
+    SQLconnector *temp;
 };
 
 #endif // START_H

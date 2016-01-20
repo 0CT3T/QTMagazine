@@ -6,6 +6,7 @@ start::start(QWidget *parent) :
     ui(new Ui::start)
 {
     ui->setupUi(this);
+    temp = new SQLconnector();
 }
 
 start::~start()
