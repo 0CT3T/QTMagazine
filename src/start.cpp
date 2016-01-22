@@ -1,15 +1,13 @@
 #include "start.h"
 #include "ui_start.h"
 
-start::start(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::start)
+start::start()
 {
-    ui->setupUi(this);
+
     temp = new SQLconnector();
 }
 
 start::~start()
 {
-    delete ui;
+
 }
