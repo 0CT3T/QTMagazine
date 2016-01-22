@@ -3,6 +3,7 @@
 
 
 #include <sqlconnector.h>
+#include <QWidget>
 
 
 
