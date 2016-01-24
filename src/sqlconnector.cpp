@@ -47,7 +47,7 @@ QVariant SQLconnector::addLienTheme(QSqlQuery &q, const QVariant &ArticleID, con
 
 QSqlError SQLconnector::initDb()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(  QDir::currentPath() + "/Data.sqlite" );
 
     if (!db.open())
@@ -58,9 +58,7 @@ QSqlError SQLconnector::initDb()
         && tables.contains("Magazine", Qt::CaseInsensitive))
         return QSqlError();
 
-
-    QSqlQuery temp;
-    q=temp;
+    QSqlQuery q;
 
 
     if (!q.exec(QLatin1String("create table Article(id integer primary key, name varchar, description varchar, magazine integer)")))
@@ -72,11 +70,15 @@ QSqlError SQLconnector::initDb()
     if (!q.exec(QLatin1String("create table LienTheme(idArticle integer primary key, idTheme integer primary key)")))
         return q.lastError();
 
+
+
     if (!q.prepare(QLatin1String("insert into Magazine(name) values(?)")))
         return q.lastError();
     QVariant linuxId = addMagazine(q, QLatin1String("LINUX PRATIQUE N°93"));
 
 
+
+    db.close();
     return QSqlError();
 }
 
@@ -85,4 +87,7 @@ void SQLconnector::showError(const QSqlError &err)
     //QMessageBox::critical(this, "Unable to initialize Database","Error initializing database: " + err.text());
 }
 
-
+QSqlDatabase SQLconnector::getDatabase()
+{
+    return this->db;
+}

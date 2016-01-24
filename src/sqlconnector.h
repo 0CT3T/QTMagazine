@@ -15,9 +15,10 @@ public:
     QVariant addTheme(QSqlQuery &q, const QString &name, const QVariant &ThemeID);
     QVariant addLienTheme(QSqlQuery &q, const QVariant &ArticleID, const QVariant &ThemeID);
     QSqlError initDb();
+    QSqlDatabase getDatabase();
     void showError(const QSqlError &err);
 
-    QSqlQuery q;
+    QSqlDatabase db;
 };
 
 #endif // SQLCONNECTOR_H

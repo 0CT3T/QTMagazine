@@ -4,7 +4,8 @@
 
 #include <sqlconnector.h>
 #include <QWidget>
-
+#include "theme.h"
+#include "themedao.h"
 
 
 class start : public QMainWindow
@@ -15,7 +16,7 @@ public:
     ~start();
 
 private:
-    SQLconnector *temp;
+
 };
 
 #endif // START_H
