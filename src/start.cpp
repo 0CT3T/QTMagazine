@@ -7,6 +7,8 @@ start::start()
     QTreeView *TreeView = new QTreeView;
     QLineEdit *Edit = new QLineEdit;
 
+    QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(openModifier()));
+
 
     QVBoxLayout *theme = new QVBoxLayout;
     theme->addWidget(Edit);
@@ -25,13 +27,17 @@ start::start()
     this->resize(800, 600);
     this->setCentralWidget(test);
 
-    Theme *thememod = new Theme(QLatin1String("Linux"),0);
-    ThemeDAO *Dao = new ThemeDAO() ;
-    Dao->addTheme(*thememod);
+
 
 }
 
 start::~start()
 {
 
+}
+
+void start::openModifier()
+{
+    AddTheme w;
+    w.exec();
 }

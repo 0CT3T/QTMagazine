@@ -4,18 +4,19 @@
 
 #include <sqlconnector.h>
 #include <QWidget>
-#include "theme.h"
-#include "themedao.h"
+#include "addtheme.h"
 
 
 class start : public QMainWindow
 {
+Q_OBJECT
 
 public:
     start();
     ~start();
 
-private:
+private slots:
+    void openModifier();
 
 };
 

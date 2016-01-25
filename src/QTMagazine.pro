@@ -7,10 +7,12 @@ TARGET = QTMagazine
 TEMPLATE = app
 SOURCES += main.cpp start.cpp sqlconnector.cpp \
     theme.cpp \
-    themedao.cpp
+    themedao.cpp \
+    addtheme.cpp
 HEADERS  += start.h sqlconnector.h \
     theme.h \
-    themedao.h
+    themedao.h \
+    addtheme.h
 FORMS    +=
 
 
