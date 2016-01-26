@@ -9,10 +9,10 @@
 class ThemeDAO
 {
 private:
-    SQLconnector *SQLiteHelper;
 public:
    ThemeDAO();
-   QVariant addTheme( Theme &theme);
+   int addTheme( Theme &theme);
+   QList<Theme> selectAll();
 };
 
 #endif // THEMDAO_H

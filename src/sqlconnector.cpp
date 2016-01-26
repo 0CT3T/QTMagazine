@@ -55,8 +55,11 @@ QSqlError SQLconnector::initDb()
 
     QStringList tables = db.tables();
     if (tables.contains("Article", Qt::CaseInsensitive)
-        && tables.contains("Magazine", Qt::CaseInsensitive))
+        && tables.contains("Magazine", Qt::CaseInsensitive)
+        && tables.contains("LienTheme", Qt::CaseInsensitive)){
+        db.close();
         return QSqlError();
+    }
 
     QSqlQuery q;
 
@@ -67,9 +70,10 @@ QSqlError SQLconnector::initDb()
         return q.lastError();
     if (!q.exec(QLatin1String("create table Theme(id integer primary key, name varchar, dependance integer)")))
         return q.lastError();
-    if (!q.exec(QLatin1String("create table LienTheme(idArticle integer primary key, idTheme integer primary key)")))
+    if (!q.exec(QLatin1String("create table LienTheme(idArticle integer NOT NULL, idTheme integer NOT NULL, PRIMARY KEY ( idArticle, idTheme))"))){
+        qDebug () << q.lastError();
         return q.lastError();
-
+}
 
 
     if (!q.prepare(QLatin1String("insert into Magazine(name) values(?)")))

@@ -13,6 +13,7 @@
 #include "theme.h"
 #include "themedao.h"
 #include <QLatin1String>
+#include <stdexcept>
 
 class AddTheme : public QDialog
 {
@@ -26,6 +27,7 @@ private slots:
 private:
     QLineEdit *NameEdit;
     QComboBox *DepBox;
+    ThemeDAO *Dao;
 };
 
 #endif // ADDTHEME_H

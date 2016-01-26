@@ -3,17 +3,29 @@
 AddTheme::AddTheme()
 {
 
+    Dao = new ThemeDAO();
+
     QLabel *NameText = new QLabel("Name");
     NameEdit = new QLineEdit;
     QLabel*DepText = new QLabel("Depend");
 
+
+    QList<Theme> listtheme = Dao->selectAll();
+    QListIterator<Theme> i(listtheme);
     QStringList wordList;
-    wordList << "alpha" << "omega" << "omicron" << "zeta";
+    while(i.hasNext()){
+        Theme tempo = i.next();
+        wordList.append( tempo.getName() + "." +  QString::number(tempo.getID()));
+    }
+
     QCompleter *completer = new QCompleter(wordList, this);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
 
     DepBox = new QComboBox;
     DepBox->setEditable(true);
     DepBox->setCompleter(completer);
+    DepBox->addItems(wordList);
 
 
     QPushButton *button = new QPushButton("ADD");
@@ -29,16 +41,18 @@ AddTheme::AddTheme()
 
     this->setLayout(theme);
 
-    /*QWidget *test = new QWidget;
-    test->setLayout(theme);
-    this->setCentralWidget(test);*/
-
 }
 
 void AddTheme::add()
 {
-    Theme *thememod = new Theme(this->NameEdit->text(),0);
-    ThemeDAO *Dao = new ThemeDAO() ;
+    int dep = 0;
+    QStringList list  = DepBox->currentText().split(".");
+    if(list.size()>=2)
+        dep = list.at(1).toInt();
+
+
+    qDebug() << this->NameEdit->text() + " " + QString::number(dep);
+    Theme *thememod = new Theme(this->NameEdit->text(),dep);
     Dao->addTheme(*thememod);
 
     this->close();

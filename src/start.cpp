@@ -3,6 +3,8 @@
 
 start::start()
 {
+    SQLconnector *initdb = new SQLconnector();
+
     QPushButton *Modifier = new QPushButton("Modifier");
     QTreeView *TreeView = new QTreeView;
     QLineEdit *Edit = new QLineEdit;
