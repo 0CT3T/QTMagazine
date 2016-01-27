@@ -13,6 +13,7 @@ public:
    ThemeDAO();
    int addTheme( Theme &theme);
    QList<Theme> selectAll();
+   static QList<Theme> selectAllDepen(int ID);
 };
 
 #endif // THEMDAO_H

@@ -66,21 +66,12 @@ QSqlError SQLconnector::initDb()
 
     if (!q.exec(QLatin1String("create table Article(id integer primary key, name varchar, description varchar, magazine integer)")))
         return q.lastError();
-    if (!q.exec(QLatin1String("create table Magazine(id integer primary key, name varchar)")))
+    if (!q.exec(QLatin1String("create table Magazine(id integer primary key, name varchar, numero integer)")))
         return q.lastError();
     if (!q.exec(QLatin1String("create table Theme(id integer primary key, name varchar, dependance integer)")))
         return q.lastError();
-    if (!q.exec(QLatin1String("create table LienTheme(idArticle integer NOT NULL, idTheme integer NOT NULL, PRIMARY KEY ( idArticle, idTheme))"))){
-        qDebug () << q.lastError();
+    if (!q.exec(QLatin1String("create table LienTheme(idArticle integer NOT NULL, idTheme integer NOT NULL, PRIMARY KEY ( idArticle, idTheme))")))
         return q.lastError();
-}
-
-
-    if (!q.prepare(QLatin1String("insert into Magazine(name) values(?)")))
-        return q.lastError();
-    QVariant linuxId = addMagazine(q, QLatin1String("LINUX PRATIQUE N°93"));
-
-
 
     db.close();
     return QSqlError();
