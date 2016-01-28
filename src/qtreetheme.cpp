@@ -55,3 +55,31 @@ void QTreeTheme::addChildren(QTreeWidgetItem *item,int ID)
         this->addChildren(itemtemp,tempo.getID());
     }
 }
+
+/*
+ * SET BACKGROUND POUR TOUS LES ITEMS
+ *
+*/
+void QTreeTheme::setBackground(QTreeWidgetItem *item, QColor color)
+{
+    item->setBackground(0,color);
+    for( int i = 0; i < item->childCount(); ++i )
+            setBackground( item->child(i),color );
+}
+
+
+/*
+ * SEARCH IN THE TREEVIEW
+ *
+*/
+void QTreeTheme::search(QString temp)
+{
+    setBackground(this->invisibleRootItem(),Qt::white);
+    if(temp!=""){
+         QList<QTreeWidgetItem*> listWidget = this->findItems(temp,Qt::MatchContains | Qt::MatchRecursive);
+         foreach(QTreeWidgetItem* tempo,listWidget)
+         {
+             tempo->setBackgroundColor(0,QColor::fromRgba(qRgba(0,0,255,20)));
+         }
+    }
+}

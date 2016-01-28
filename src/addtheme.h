@@ -14,6 +14,7 @@
 #include "themedao.h"
 #include <QLatin1String>
 #include <stdexcept>
+#include <qtreetheme.h>
 
 class AddTheme : public QDialog
 {
@@ -26,9 +27,9 @@ private slots:
     void add();
 private:
     QLineEdit *NameEdit;
-    QComboBox *DepBox;
+
     ThemeDAO *Dao;
-    QList<int> listid;
+    QTreeTheme *TreeView;
 };
 
 #endif // ADDTHEME_H

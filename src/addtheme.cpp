@@ -10,6 +10,7 @@ AddTheme::AddTheme()
     QLabel*DepText = new QLabel("Depend");
 
 
+    /*
     QList<Theme> listtheme = Dao->selectAll();
     QListIterator<Theme> i(listtheme);
     QStringList wordList;
@@ -27,6 +28,8 @@ AddTheme::AddTheme()
     DepBox->setEditable(true);
     DepBox->setCompleter(completer);
     DepBox->addItems(wordList);
+    */
+    TreeView = new QTreeTheme();
 
 
     QPushButton *button = new QPushButton("ADD");
@@ -37,7 +40,7 @@ AddTheme::AddTheme()
     theme->addWidget(NameText);
     theme->addWidget(NameEdit);
     theme->addWidget(DepText);
-    theme->addWidget(DepBox);
+    theme->addWidget(TreeView);
     theme->addWidget(button);
 
     this->setLayout(theme);
@@ -48,8 +51,11 @@ void AddTheme::add()
 {
     Theme *thememod ;
 
-    if(this->DepBox->currentIndex()>=0)
-        thememod = new Theme(this->NameEdit->text(),this->listid.at(this->DepBox->currentIndex()));
+    if(!this->TreeView->selectedItems().isEmpty()){
+        QList<QTreeWidgetItem*> listWidget = this->TreeView->selectedItems();
+        QTreeWidgetItem *item = listWidget.at(0);
+        thememod = new Theme(this->NameEdit->text(),item->text(1).toInt());
+    }
     else
         thememod = new Theme(this->NameEdit->text(),0);
 

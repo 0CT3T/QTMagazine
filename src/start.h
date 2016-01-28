@@ -18,9 +18,9 @@ public:
 
 private slots:
     void openModifier();
-    void search(QString temp);
+
 private:
-    void setBackground(QTreeWidgetItem *item, QColor color);
+
 
     //variable de classe
     QTreeTheme *TreeView;
