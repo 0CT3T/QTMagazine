@@ -8,11 +8,13 @@ TEMPLATE = app
 SOURCES += main.cpp start.cpp sqlconnector.cpp \
     theme.cpp \
     themedao.cpp \
-    addtheme.cpp
+    addtheme.cpp \
+    qtreetheme.cpp
 HEADERS  += start.h sqlconnector.h \
     theme.h \
     themedao.h \
-    addtheme.h
+    addtheme.h \
+    qtreetheme.h
 FORMS    +=
 
 

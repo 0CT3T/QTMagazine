@@ -15,7 +15,8 @@ AddTheme::AddTheme()
     QStringList wordList;
     while(i.hasNext()){
         Theme tempo = i.next();
-        wordList.append( tempo.getName() + separator +  QString::number(tempo.getID()));
+        wordList.append( tempo.getName());
+        listid.append(tempo.getID());
     }
 
     QCompleter *completer = new QCompleter(wordList, this);
@@ -45,12 +46,13 @@ AddTheme::AddTheme()
 
 void AddTheme::add()
 {
-    int dep = 0;
-    QStringList list  = DepBox->currentText().split(separator);
-    if(list.size()>=2)
-        dep = list.at(1).toInt();
+    Theme *thememod ;
 
-    Theme *thememod = new Theme(this->NameEdit->text(),dep);
+    if(this->DepBox->currentIndex()>=0)
+        thememod = new Theme(this->NameEdit->text(),this->listid.at(this->DepBox->currentIndex()));
+    else
+        thememod = new Theme(this->NameEdit->text(),0);
+
     Dao->addTheme(*thememod);
 
     this->close();

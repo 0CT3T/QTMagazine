@@ -44,7 +44,7 @@ QList<Theme> ThemeDAO::selectAll()
     if(db.open()){
 
     QSqlQuery q;
-    q.exec(QLatin1String("SELECT * FROM Theme"));
+    q.exec(QLatin1String("SELECT * FROM Theme "));
 
     while (q.next()) {
             int ID = q.value(0).toInt();
@@ -71,7 +71,7 @@ QList<Theme> ThemeDAO::selectAllDepen(int ID)
     if(db.open()){
 
     QSqlQuery q;
-    q.prepare(QLatin1String("SELECT * FROM Theme WHERE dependance = ? "));
+    q.prepare(QLatin1String("SELECT * FROM Theme WHERE dependance = ? ORDER BY name ASC"));
     q.addBindValue(ID);
 
     q.exec();

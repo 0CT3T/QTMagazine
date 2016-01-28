@@ -28,7 +28,7 @@ private:
     QLineEdit *NameEdit;
     QComboBox *DepBox;
     ThemeDAO *Dao;
-    const QString separator = "@";
+    QList<int> listid;
 };
 
 #endif // ADDTHEME_H
