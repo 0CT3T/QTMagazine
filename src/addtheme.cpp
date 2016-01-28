@@ -3,7 +3,7 @@
 AddTheme::AddTheme()
 {
 
-    Dao = new ThemeDAO();
+
 
     QLabel *NameText = new QLabel("Name");
     NameEdit = new QLineEdit;
@@ -59,7 +59,7 @@ void AddTheme::add()
     else
         thememod = new Theme(this->NameEdit->text(),0);
 
-    Dao->addTheme(*thememod);
+    ThemeDAO::addTheme(*thememod);
 
     this->close();
 }

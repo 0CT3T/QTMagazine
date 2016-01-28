@@ -27,8 +27,6 @@ private slots:
     void add();
 private:
     QLineEdit *NameEdit;
-
-    ThemeDAO *Dao;
     QTreeTheme *TreeView;
 };
 

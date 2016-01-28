@@ -6,7 +6,22 @@ start::start()
     SQLconnector *initdb = new SQLconnector();
 
     QPushButton *Modifier = new QPushButton("Modifier");
+
+    //completer liste de choix
+    QList<Theme> listtheme = ThemeDAO::selectAll();
+    QListIterator<Theme> i(listtheme);
+    QStringList wordList;
+    while(i.hasNext()){
+        Theme tempo = i.next();
+        wordList.append( tempo.getName());
+    }
+
+    QCompleter *completer = new QCompleter(wordList, this);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+
     QLineEdit *Edit = new QLineEdit;
+    Edit->setCompleter(completer);
     TreeView = new QTreeTheme;
 
     QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(openModifier()));
