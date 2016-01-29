@@ -57,7 +57,7 @@ start::~start()
 
 void start::openModifier()
 {
-    AddTheme w;
+    addArticle w;
     w.exec();
     TreeView->initTreeView();
 }

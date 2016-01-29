@@ -7,14 +7,13 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QVBoxLayout>
-#include <QPushButton>
 #include <QObject>
 #include <QCompleter>
 #include "theme.h"
 #include "themedao.h"
 #include <QLatin1String>
 #include <stdexcept>
-#include <qtreetheme.h>
+#include "qtreetheme.h"
 
 class AddTheme : public QDialog
 {

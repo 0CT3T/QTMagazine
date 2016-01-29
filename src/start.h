@@ -4,7 +4,7 @@
 
 #include <sqlconnector.h>
 #include <QWidget>
-#include "addtheme.h"
+#include "addarticle.h"
 #include "qtreetheme.h"
 
 

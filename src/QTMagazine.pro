@@ -9,12 +9,14 @@ SOURCES += main.cpp start.cpp sqlconnector.cpp \
     theme.cpp \
     themedao.cpp \
     addtheme.cpp \
-    qtreetheme.cpp
+    qtreetheme.cpp \
+    addarticle.cpp
 HEADERS  += start.h sqlconnector.h \
     theme.h \
     themedao.h \
     addtheme.h \
-    qtreetheme.h
+    qtreetheme.h \
+    addarticle.h
 FORMS    +=
 
 

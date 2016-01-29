@@ -19,6 +19,7 @@ void QTreeTheme::initTreeView()
 
 
 
+
     //Recuperer tous les parents
     QList<Theme> listtheme = ThemeDAO::selectAllDepen(0);
     QListIterator<Theme> i(listtheme);
@@ -30,11 +31,12 @@ void QTreeTheme::initTreeView()
         item->setText(0,tempo.getName());
         item->setText(1,QString::number(tempo.getID()));
 
+
         item->setExpanded(true);
         this->addChildren(item,tempo.getID());
     }
 
-
+    this->resizeColumnToContents(0);
 }
 
 /*
