@@ -11,12 +11,28 @@ addArticle::addArticle()
     QLabel*MagText = new QLabel("Magazine");
     MagEdit = new QLineEdit;
 
+    //Ajout completer magazine
+    QList<Magazine> listname = MagazineDAO::selectAll();
+
+    QListIterator<Magazine> i(listname);
+    QStringList wordList;
+    while(i.hasNext()){
+        Magazine tempo = i.next();
+        wordList.append( tempo.getName() + " N°"+ QString::number(tempo.getNum()));
+        this->listMagazine.append(tempo.getID());
+    }
+
+    QCompleter *completer = new QCompleter(wordList, this);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    MagEdit->setCompleter(completer);
 
     QPushButton *Modifier = new QPushButton("Ajouter");
     QPushButton *AjTheme = new QPushButton("Ajout theme");
     QPushButton *AjMagazine = new QPushButton("Ajout Magazine");
 
     QObject::connect(AjTheme, SIGNAL(clicked()), this, SLOT(openModifier()));
+    QObject::connect(AjMagazine, SIGNAL(clicked()), this, SLOT(openArticle()));
 
     QHBoxLayout *bouton = new QHBoxLayout;
     bouton->addWidget(Modifier);
@@ -48,4 +64,10 @@ void addArticle::openModifier()
     AddTheme w;
     w.exec();
     TreeView->initTreeView();
+}
+
+void addArticle::openArticle()
+{
+    AddMagazine w;
+    w.exec();
 }

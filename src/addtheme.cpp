@@ -4,7 +4,6 @@ AddTheme::AddTheme()
 {
 
 
-
     QLabel *NameText = new QLabel("Name");
     NameEdit = new QLineEdit;
     QLabel*DepText = new QLabel("Depend");

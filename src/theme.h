@@ -1,5 +1,5 @@
-#ifndef TYPE_H
-#define TYPE_H
+#ifndef THEME_H
+#define THEME_H
 
 #include <QWidget>
 

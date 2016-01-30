@@ -10,13 +10,23 @@ SOURCES += main.cpp start.cpp sqlconnector.cpp \
     themedao.cpp \
     addtheme.cpp \
     qtreetheme.cpp \
-    addarticle.cpp
+    addarticle.cpp \
+    magazine.cpp \
+    article.cpp \
+    lientheme.cpp \
+    magazinedao.cpp \
+    addmagazine.cpp
 HEADERS  += start.h sqlconnector.h \
     theme.h \
     themedao.h \
     addtheme.h \
     qtreetheme.h \
-    addarticle.h
+    addarticle.h \
+    magazine.h \
+    article.h \
+    lientheme.h \
+    magazinedao.h \
+    addmagazine.h
 FORMS    +=
 
 
