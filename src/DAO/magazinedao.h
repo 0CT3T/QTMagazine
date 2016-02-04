@@ -3,8 +3,8 @@
 
 #include <QtSql>
 #include <QtWidgets>
-#include "magazine.h"
-#include "sqlconnector.h"
+#include "../Model/magazine.h"
+#include "../Sqlite/sqlconnector.h"
 
 class MagazineDAO
 {

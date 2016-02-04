@@ -4,8 +4,8 @@
 #include <QWidget>
 #include <QTreeWidget>
 #include <QHeaderView>
-#include "theme.h"
-#include "themedao.h"
+#include "../../Model/theme.h"
+#include "../../DAO/themedao.h"
 
 class QTreeTheme : public QTreeWidget
 {

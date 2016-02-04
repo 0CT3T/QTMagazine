@@ -1,5 +1,5 @@
-#ifndef ADDTHEME_H
-#define ADDTHEME_H
+#ifndef ADDMAGAZINE_H
+#define ADDMAGAZINE_H
 
 #include <QDialog>
 #include <QWidget>
@@ -8,24 +8,22 @@
 #include <QVBoxLayout>
 #include <QObject>
 #include <QCompleter>
-#include "theme.h"
-#include "themedao.h"
-#include <QLatin1String>
-#include <stdexcept>
-#include "qtreetheme.h"
+#include "../../Model/magazine.h"
+#include "../../DAO/magazinedao.h"
 
-class AddTheme : public QDialog
+class AddMagazine : public QDialog
 {
 Q_OBJECT
 
 public:
-    AddTheme();
+    AddMagazine ();
 
 private slots:
     void add();
 private:
     QLineEdit *NameEdit;
-    QTreeTheme *TreeView;
+    QSpinBox *numberEdit;
+
 };
 
 #endif // ADDTHEME_H

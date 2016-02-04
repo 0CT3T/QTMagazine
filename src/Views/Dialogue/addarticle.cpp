@@ -9,7 +9,7 @@ addArticle::addArticle()
     QLabel*DescriptionText = new QLabel("Description");
     DescriptionEdit = new QTextEdit;
     QLabel*MagText = new QLabel("Magazine");
-    MagEdit = new QLineEdit;
+    MagEdit = new QComboBox;
 
     //Ajout completer magazine
     QList<Magazine> listname = MagazineDAO::selectAll();
@@ -26,6 +26,8 @@ addArticle::addArticle()
     completer->setCompletionMode(QCompleter::InlineCompletion);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
     MagEdit->setCompleter(completer);
+    MagEdit->setEditable(true);
+    MagEdit->addItems(wordList);
 
     QPushButton *Modifier = new QPushButton("Ajouter");
     QPushButton *AjTheme = new QPushButton("Ajout theme");

@@ -3,31 +3,15 @@
 QT       += core gui sql widgets
 INCLUDEPATH += .
 
+include(Sqlite/Sqlite.pri)
+include(DAO/Dao.pri)
+include(Model/Model.pri)
+include(Views/Views.pri)
+
 TARGET = QTMagazine
 TEMPLATE = app
-SOURCES += main.cpp start.cpp sqlconnector.cpp \
-    theme.cpp \
-    themedao.cpp \
-    addtheme.cpp \
-    qtreetheme.cpp \
-    addarticle.cpp \
-    magazine.cpp \
-    article.cpp \
-    lientheme.cpp \
-    magazinedao.cpp \
-    addmagazine.cpp
-HEADERS  += start.h sqlconnector.h \
-    theme.h \
-    themedao.h \
-    addtheme.h \
-    qtreetheme.h \
-    addarticle.h \
-    magazine.h \
-    article.h \
-    lientheme.h \
-    magazinedao.h \
-    addmagazine.h
-FORMS    +=
+SOURCES += main.cpp start.cpp
+HEADERS  += start.h
 
 
 wince {

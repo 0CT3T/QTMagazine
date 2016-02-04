@@ -3,8 +3,8 @@
 
 #include <QtSql>
 #include <QtWidgets>
-#include "theme.h"
-#include "sqlconnector.h"
+#include "../Model/theme.h"
+#include "../Sqlite/sqlconnector.h"
 
 class ThemeDAO
 {
