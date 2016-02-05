@@ -15,6 +15,10 @@
 #include "../Widget/qtreetheme.h"
 #include "../../DAO/magazinedao.h"
 #include "../../Model/magazine.h"
+#include "../../Model/article.h"
+#include "../../DAO/articledao.h"
+#include "../../Model/lientheme.h"
+#include "../../DAO/lienthemedao.h"
 #include "addtheme.h"
 #include "addmagazine.h"
 
@@ -34,9 +38,12 @@ private:
     QComboBox *MagEdit;
     QTreeTheme *TreeView;
     QList<int> listMagazine;
+    void initMagazine();
+
 private slots:
     void openModifier();
     void openArticle();
+    void Ajouter();
 };
 
 #endif // ADDARTICLE_H

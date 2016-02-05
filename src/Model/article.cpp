@@ -16,11 +16,11 @@ Article::Article(int ID,QString title,QString description,int magID)
 }
 
 int Article::getID(){
-    return this->getID();
+    return this->ID;
 }
 
 QString Article::getTitle(){
-    return this->getTitle();
+    return this->title;
 }
 
 QString Article::getDescription(){
@@ -28,5 +28,5 @@ QString Article::getDescription(){
 }
 
 int Article::getmagID() {
-    return this->getmagID();
+    return this->magID;
 }

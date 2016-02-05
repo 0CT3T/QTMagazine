@@ -27,17 +27,19 @@ start::start()
     QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(openModifier()));
     QObject::connect(Edit,SIGNAL(textChanged(QString)),TreeView,SLOT(search(QString)));
 
+    QObject::connect(TreeView, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this, SLOT(doubleclick(QTreeWidgetItem*,int)));
+
 
     QVBoxLayout *theme = new QVBoxLayout;
     theme->addWidget(Edit);
     theme->addWidget(TreeView);
     theme->addWidget(Modifier);
 
-    //QLayout *graphlayout = new QLayout;
+    graphlayout = new CircleLayout();
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addLayout(theme);
-    //layout->addLayout(graphlayout);
+    layout->addLayout(graphlayout);
 
 
     QWidget *test = new QWidget;
@@ -60,4 +62,11 @@ void start::openModifier()
     addArticle w;
     w.exec();
     TreeView->initTreeView();
+}
+
+void start::doubleclick(QTreeWidgetItem* index,int column)
+{
+    qDebug() << index->text(1);
+    Theme *theme = new Theme(index->text(1).toInt(),index->text(0));
+    graphlayout->initlayout(*theme);
 }

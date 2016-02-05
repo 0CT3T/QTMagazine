@@ -2,10 +2,13 @@
 #define START_H
 
 
-#include <sqlconnector.h>
+
 #include <QWidget>
-#include "addarticle.h"
-#include "qtreetheme.h"
+
+#include "Views/Dialogue/addarticle.h"
+#include "Views/Widget/qtreetheme.h"
+#include "Sqlite/sqlconnector.h"
+#include "Views/Widget/circlelayout.h"
 
 
 class start : public QMainWindow
@@ -18,12 +21,14 @@ public:
 
 private slots:
     void openModifier();
+    void doubleclick(QTreeWidgetItem* index,int column);
 
 private:
 
 
     //variable de classe
     QTreeTheme *TreeView;
+    CircleLayout *graphlayout;
 
 };
 

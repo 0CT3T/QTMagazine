@@ -15,6 +15,7 @@ private:
 public:
     Theme(QString name,int depID);
     Theme(int ID,QString name,int depID);
+    Theme(int ID,QString name);
     int getID();
     QString getName();
     int getDep();
