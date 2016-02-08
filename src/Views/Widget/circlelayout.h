@@ -5,25 +5,37 @@
 #include <QtGui>
 #include <QList>
 #include <QLayout>
+#include <QGraphicsView>
+#include <QGraphicsTextItem>
+#include <math.h>
 
+#include "../../DAO/themedao.h"
 #include "../../Model/theme.h"
+#include "../../Model/article.h"
 
-class CircleLayout : public QLayout
+#define SPACE 10
+#define THEMECOLOR QColor(255,100,100,100)
+#define ARTICLECOLOR QColor(100,255,100,100)
+#define WHITE QColor(255,255,255,255)
+
+
+class CircleLayout : public QGraphicsView
 {
+    Q_OBJECT
 public:
-    CircleLayout();
-    ~CircleLayout();
-    void initlayout(Theme theme);
-    void addItem(QLayoutItem *item);
-    QSize sizeHint() const;
-    QSize minimumSize() const;
-    int count() const;
-    QLayoutItem *itemAt(int) const;
-    QLayoutItem *takeAt(int);
-    void setGeometry(const QRect &rect);
+    explicit CircleLayout();
+    void initlayout(Theme *theme);
+
+private slots:
+    void scenechanged();
 
 private:
-    QList<QLayoutItem*> list;
+    void paint();
+
+    Theme* parent;
+    QGraphicsScene *scene;
+
+
 };
 
 #endif // CIRCLELAYOUT_H

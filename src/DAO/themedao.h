@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QtWidgets>
 #include "../Model/theme.h"
+#include "../Model/article.h"
 #include "../Sqlite/sqlconnector.h"
 
 class ThemeDAO
@@ -14,6 +15,7 @@ public:
    static int addTheme( Theme &theme);
    static QList<Theme> selectAll();
    static QList<Theme> selectAllDepen(int ID);
+   static QList<Article> selectAllArticle(int ID);
 };
 
 #endif // THEMDAO_H

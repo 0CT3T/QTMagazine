@@ -39,7 +39,7 @@ start::start()
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addLayout(theme);
-    layout->addLayout(graphlayout);
+    layout->addWidget(graphlayout);
 
 
     QWidget *test = new QWidget;
@@ -66,7 +66,6 @@ void start::openModifier()
 
 void start::doubleclick(QTreeWidgetItem* index,int column)
 {
-    qDebug() << index->text(1);
     Theme *theme = new Theme(index->text(1).toInt(),index->text(0));
-    graphlayout->initlayout(*theme);
+    graphlayout->initlayout(theme);
 }

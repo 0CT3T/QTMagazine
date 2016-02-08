@@ -88,3 +88,34 @@ QList<Theme> ThemeDAO::selectAllDepen(int ID)
     }
     return temp;
 }
+
+/*
+ * RECUPERER TOUS LES ARTICLES
+ * @param
+*/
+QList<Article> ThemeDAO::selectAllArticle(int ID)
+{
+    QList<Article> temp;
+    QSqlDatabase db = QSqlDatabase::database();
+
+    if(db.open()){
+
+    QSqlQuery q;
+    q.prepare(QLatin1String("SELECT Article.id, Article.name, Article.description, Article.magazine FROM Theme,LienTheme,Article WHERE Theme.id = ? AND LienTheme.idTheme = Theme.id AND LienTheme.idArticle = Article.id ORDER BY Article.name ASC"));
+    q.addBindValue(ID);
+
+    q.exec();
+
+    while (q.next()) {
+            int ID = q.value(0).toInt();
+            QString name = q.value(1).toString();
+            QString description = q.value(2).toString();
+            int magID = q.value(3).toInt();
+            Article *tempt = new Article(ID,name,description,magID);
+            temp.append(*tempt);
+        }
+
+    db.close();
+    }
+    return temp;
+}
