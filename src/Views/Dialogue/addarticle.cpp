@@ -10,8 +10,18 @@ addArticle::addArticle()
     DescriptionEdit = new QTextEdit;
     QLabel*MagText = new QLabel("Magazine");
     MagEdit = new QComboBox;
+    QLabel*pageText = new QLabel("Page");
+    page = new QSpinBox();
     this->initMagazine();
 
+
+    QHBoxLayout *lastgrouptext = new QHBoxLayout;
+    lastgrouptext->addWidget(pageText);
+    lastgrouptext->addWidget(MagText);
+
+    QHBoxLayout *lastgroup = new QHBoxLayout;
+    lastgroup->addWidget(page);
+    lastgroup->addWidget(MagEdit);
 
     QPushButton *Modifier = new QPushButton("Ajouter");
     QPushButton *AjTheme = new QPushButton("Ajout theme");
@@ -32,8 +42,8 @@ addArticle::addArticle()
     theme->addWidget(TitleEdit);
     theme->addWidget(DescriptionText);
     theme->addWidget(DescriptionEdit);
-    theme->addWidget(MagText);
-    theme->addWidget(MagEdit);
+    theme->addLayout(lastgrouptext);
+    theme->addLayout(lastgroup);
     theme->addLayout(bouton);
 
     TreeView = new QTreeTheme();
@@ -90,10 +100,11 @@ void addArticle::Ajouter()
 
     if (this->TitleEdit->text()!=""
             && this->DescriptionEdit->toPlainText()!=""
-            && this->listMagazine.at(this->MagEdit->currentIndex())!=0){
+            && this->listMagazine.at(this->MagEdit->currentIndex())!=0
+            && this->page->value()!=0){
 
 
-        articlemod = new Article(this->TitleEdit->text(),this->DescriptionEdit->toPlainText(),this->listMagazine.at(this->MagEdit->currentIndex()));
+        articlemod = new Article(this->TitleEdit->text(),this->DescriptionEdit->toPlainText(),this->page->value(),this->listMagazine.at(this->MagEdit->currentIndex()));
 
         int ID = articledao::addArticle(*articlemod);
 

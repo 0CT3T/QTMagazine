@@ -15,9 +15,10 @@ int articledao::addArticle(Article &article)
     if(db.open()){
         QSqlQuery q;
 
-        q.prepare(QLatin1String("insert into Article(name,description,magazine) values(?,?,?)"));
+        q.prepare(QLatin1String("insert into Article(name,description,page,magazine) values(?,?,?,?)"));
         q.addBindValue(article.getTitle());
         q.addBindValue(article.getDescription());
+        q.addBindValue(article.getPage());
         q.addBindValue(article.getmagID());
 
         q.exec();
@@ -47,8 +48,9 @@ QList<Article> articledao::selectAll()
             int ID = q.value(0).toInt();
             QString title = q.value(1).toString();
             QString description = q.value(2).toString();
-            int nummag = q.value(3).toInt();
-            Article *tempm = new Article(ID,title,description,nummag);
+            int page = q.value(3).toInt();
+            int nummag = q.value(4).toInt();
+            Article *tempm = new Article(ID,title,description,page,nummag);
             temp.append(*tempm);
         }
 

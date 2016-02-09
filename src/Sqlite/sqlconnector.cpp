@@ -64,7 +64,7 @@ QSqlError SQLconnector::initDb()
     QSqlQuery q;
 
 
-    if (!q.exec(QLatin1String("create table Article(id integer primary key, name varchar, description varchar, magazine integer)")))
+    if (!q.exec(QLatin1String("create table Article(id integer primary key, name varchar, description varchar,page integer, magazine integer)")))
         return q.lastError();
     if (!q.exec(QLatin1String("create table Magazine(id integer primary key, name varchar, numero integer)")))
         return q.lastError();

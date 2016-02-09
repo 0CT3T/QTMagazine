@@ -14,8 +14,9 @@
 #include "../../Model/article.h"
 
 #define SPACE 10
-#define THEMECOLOR QColor(255,100,100,100)
+#define PARENTCOLOR QColor(255,100,100,100)
 #define ARTICLECOLOR QColor(100,255,100,100)
+#define THEMECOLOR QColor(100,100,255,100)
 #define WHITE QColor(255,255,255,255)
 
 
@@ -31,6 +32,7 @@ private slots:
 
 private:
     void paint();
+    void ajoutBulle(float x, float y,QString text,QColor color);
 
     Theme* parent;
     QGraphicsScene *scene;

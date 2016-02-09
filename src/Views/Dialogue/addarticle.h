@@ -36,6 +36,7 @@ private:
     QLineEdit *TitleEdit;
     QTextEdit *DescriptionEdit;
     QComboBox *MagEdit;
+    QSpinBox *page;
     QTreeTheme *TreeView;
     QList<int> listMagazine;
     void initMagazine();

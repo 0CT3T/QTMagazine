@@ -27,7 +27,7 @@ start::start()
     QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(openModifier()));
     QObject::connect(Edit,SIGNAL(textChanged(QString)),TreeView,SLOT(search(QString)));
 
-    QObject::connect(TreeView, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this, SLOT(doubleclick(QTreeWidgetItem*,int)));
+    QObject::connect(TreeView, SIGNAL(itemClicked(QTreeWidgetItem*,int)),this, SLOT(doubleclick(QTreeWidgetItem*,int)));
 
 
     QVBoxLayout *theme = new QVBoxLayout;
