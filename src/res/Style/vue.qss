@@ -1,0 +1,5 @@
+QTreeTheme { 
+	background-color: rgba(175,175,175,75%);
+    font-weight: bold;
+    color: white 
+}

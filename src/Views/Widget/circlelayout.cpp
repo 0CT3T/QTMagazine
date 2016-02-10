@@ -3,7 +3,6 @@
 CircleLayout::CircleLayout()
 {
     scene = new QGraphicsScene(this);
-    QObject::connect(this,SIGNAL(resizeEvent()),this,SLOT(scenechanged()));
     this->setScene(scene);
 }
 

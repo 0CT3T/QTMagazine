@@ -3,6 +3,12 @@
 QTreeTheme::QTreeTheme()
 {
     this->initTreeView();
+    this->setAutoFillBackground(true);
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background,TREEBACKGROUND);
+    this->setPalette(pal);
+    //this->setStyleSheet("background-color:black;");
+
 }
 
 /*
@@ -76,12 +82,12 @@ void QTreeTheme::setBackground(QTreeWidgetItem *item, QColor color)
 */
 void QTreeTheme::search(QString temp)
 {
-    setBackground(this->invisibleRootItem(),Qt::white);
+    setBackground(this->invisibleRootItem(),WHITE);
     if(temp!=""){
          QList<QTreeWidgetItem*> listWidget = this->findItems(temp,Qt::MatchContains | Qt::MatchRecursive);
          foreach(QTreeWidgetItem* tempo,listWidget)
          {
-             tempo->setBackgroundColor(0,QColor::fromRgba(qRgba(0,0,255,20)));
+             tempo->setBackgroundColor(0,TREEITEM);
          }
     }
 }

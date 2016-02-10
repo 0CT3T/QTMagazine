@@ -7,6 +7,8 @@
 #include "../../Model/theme.h"
 #include "../../DAO/themedao.h"
 
+#include "../../color.h"
+
 class QTreeTheme : public QTreeWidget
 {
 Q_OBJECT

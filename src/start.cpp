@@ -30,10 +30,13 @@ start::start()
     QObject::connect(TreeView, SIGNAL(itemClicked(QTreeWidgetItem*,int)),this, SLOT(doubleclick(QTreeWidgetItem*,int)));
 
 
+
     QVBoxLayout *theme = new QVBoxLayout;
     theme->addWidget(Edit);
     theme->addWidget(TreeView);
     theme->addWidget(Modifier);
+    theme->setMargin(0);
+    theme->setSpacing(0);
 
     graphlayout = new CircleLayout();
 
@@ -41,11 +44,19 @@ start::start()
     layout->addLayout(theme);
     layout->addWidget(graphlayout);
 
+    layout->setSpacing(2);
+    layout->setMargin(2);
+
 
     QWidget *test = new QWidget;
     test->setLayout(layout);
     this->resize(800, 600);
     this->setCentralWidget(test);
+    this->setPalette(QPalette(BACKGROUND));
+
+
+    //this->setAttribute(Qt::WA_TranslucentBackground);
+    //this->setWindowFlags(Qt::FramelessWindowHint);
 
 }
 

@@ -8,26 +8,6 @@ AddTheme::AddTheme()
     NameEdit = new QLineEdit;
     QLabel*DepText = new QLabel("Depend");
 
-
-    /*
-    QList<Theme> listtheme = Dao->selectAll();
-    QListIterator<Theme> i(listtheme);
-    QStringList wordList;
-    while(i.hasNext()){
-        Theme tempo = i.next();
-        wordList.append( tempo.getName());
-        listid.append(tempo.getID());
-    }
-
-    QCompleter *completer = new QCompleter(wordList, this);
-    completer->setCompletionMode(QCompleter::InlineCompletion);
-    completer->setCaseSensitivity(Qt::CaseInsensitive);
-
-    DepBox = new QComboBox;
-    DepBox->setEditable(true);
-    DepBox->setCompleter(completer);
-    DepBox->addItems(wordList);
-    */
     TreeView = new QTreeTheme();
 
 
@@ -43,6 +23,7 @@ AddTheme::AddTheme()
     theme->addWidget(button);
 
     this->setLayout(theme);
+    this->resize(800, 600);
 
 }
 

@@ -53,6 +53,7 @@ addArticle::addArticle()
     back->addLayout(theme);
     back->addWidget(TreeView);
 
+    this->resize(1000, 600);
     this->setLayout(back);
 }
 

@@ -9,6 +9,9 @@
 #include "Views/Widget/qtreetheme.h"
 #include "Sqlite/sqlconnector.h"
 #include "Views/Widget/circlelayout.h"
+#include "color.h"
+
+
 
 
 class start : public QMainWindow

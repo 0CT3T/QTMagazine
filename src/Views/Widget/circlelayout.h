@@ -12,17 +12,16 @@
 #include "../../DAO/themedao.h"
 #include "../../Model/theme.h"
 #include "../../Model/article.h"
+#include "../../color.h"
 
 #define SPACE 10
-#define PARENTCOLOR QColor(255,100,100,100)
-#define ARTICLECOLOR QColor(100,255,100,100)
-#define THEMECOLOR QColor(100,100,255,100)
-#define WHITE QColor(255,255,255,255)
+
 
 
 class CircleLayout : public QGraphicsView
 {
     Q_OBJECT
+
 public:
     explicit CircleLayout();
     void initlayout(Theme *theme);
