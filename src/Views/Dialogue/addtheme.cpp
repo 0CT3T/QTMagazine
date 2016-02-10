@@ -2,7 +2,11 @@
 
 AddTheme::AddTheme()
 {
-
+    QLabel *ArticleText = new QLabel("Article");
+    ArticleText->setAlignment(Qt::AlignHCenter);
+    QFont font = ArticleText->font();
+    font.setBold(true);
+    ArticleText->setFont(font);
 
     QLabel *NameText = new QLabel("Name");
     NameEdit = new QLineEdit;
@@ -16,11 +20,15 @@ AddTheme::AddTheme()
     QObject::connect(button, SIGNAL(clicked()), this, SLOT(add()));
 
     QVBoxLayout *theme = new QVBoxLayout;
+    theme->addWidget(ArticleText);
     theme->addWidget(NameText);
     theme->addWidget(NameEdit);
     theme->addWidget(DepText);
     theme->addWidget(TreeView);
     theme->addWidget(button);
+
+    theme->setMargin(0);
+    theme->setSpacing(0);
 
     this->setLayout(theme);
     this->resize(800, 600);

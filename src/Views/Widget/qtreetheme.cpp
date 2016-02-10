@@ -3,11 +3,7 @@
 QTreeTheme::QTreeTheme()
 {
     this->initTreeView();
-    this->setAutoFillBackground(true);
-    QPalette pal(palette());
-    pal.setColor(QPalette::Background,TREEBACKGROUND);
-    this->setPalette(pal);
-    //this->setStyleSheet("background-color:black;");
+    this->setFrameShape(QFrame::NoFrame);
 
 }
 
@@ -82,7 +78,7 @@ void QTreeTheme::setBackground(QTreeWidgetItem *item, QColor color)
 */
 void QTreeTheme::search(QString temp)
 {
-    setBackground(this->invisibleRootItem(),WHITE);
+    setBackground(this->invisibleRootItem(),TREEBACKGROUND);
     if(temp!=""){
          QList<QTreeWidgetItem*> listWidget = this->findItems(temp,Qt::MatchContains | Qt::MatchRecursive);
          foreach(QTreeWidgetItem* tempo,listWidget)

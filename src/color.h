@@ -9,10 +9,11 @@
 #define THEMECOLOR QColor(100,100,255,100)
 
 ///Tree Color
-#define TREEBACKGROUND QColor(150,150,150,255)
-#define TREEITEM QColor(0,0,255,20)
+#define TREEBACKGROUND QColor(40,40,43,255)
+#define TREEITEM QColor(0,0,255,30)
 
 
+#define LABELCOLOR QColor(40,40,43,255)
 #define WHITE QColor(255,255,255,255)
 
 

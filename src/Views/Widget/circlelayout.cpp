@@ -4,6 +4,7 @@ CircleLayout::CircleLayout()
 {
     scene = new QGraphicsScene(this);
     this->setScene(scene);
+    this->setFrameShape(QFrame::NoFrame);
 }
 
 void CircleLayout::initlayout(Theme *theme)
@@ -33,6 +34,7 @@ void CircleLayout::paint()
         float y2 = y + (rayon*sin(theta));
 
         QGraphicsLineItem *Line = new QGraphicsLineItem(x,y,x2,y2);
+        Line->setPen(QPen(WHITE));
 
         this->scene->addItem(Line);
 
@@ -46,6 +48,7 @@ void CircleLayout::paint()
         float y2 = y + (rayon*sin(theta));
 
         QGraphicsLineItem *Line = new QGraphicsLineItem(x,y,x2,y2);
+        Line->setPen(QPen(WHITE));
 
         this->scene->addItem(Line);
 

@@ -3,6 +3,12 @@
 AddMagazine::AddMagazine()
 {
 
+    QLabel *ArticleText = new QLabel("Magazine");
+    ArticleText->setAlignment(Qt::AlignHCenter);
+    QFont font = ArticleText->font();
+    font.setBold(true);
+    ArticleText->setFont(font);
+
     QLabel *NameText = new QLabel("Name");
     NameEdit = new QLineEdit;
     QLabel*NumeroText = new QLabel("numero");
@@ -39,8 +45,12 @@ AddMagazine::AddMagazine()
     QObject::connect(button, SIGNAL(clicked()), this, SLOT(add()));
 
     QVBoxLayout *theme = new QVBoxLayout;
+    theme->addWidget(ArticleText);
     theme->addLayout(content);
     theme->addWidget(button);
+
+    theme->setMargin(0);
+    theme->setSpacing(0);
 
     this->resize(800, 200);
     this->setLayout(theme);

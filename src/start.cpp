@@ -5,7 +5,7 @@ start::start()
 {
     SQLconnector *initdb = new SQLconnector();
 
-    QPushButton *Modifier = new QPushButton("Modifier");
+    QPushButton *Modifier = new QPushButton("Ajouter Article");
 
     //completer liste de choix
     QList<Theme> listtheme = ThemeDAO::selectAll();
@@ -22,6 +22,7 @@ start::start()
 
     QLineEdit *Edit = new QLineEdit;
     Edit->setCompleter(completer);
+
     TreeView = new QTreeTheme;
 
     QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(openModifier()));
@@ -44,19 +45,14 @@ start::start()
     layout->addLayout(theme);
     layout->addWidget(graphlayout);
 
-    layout->setSpacing(2);
-    layout->setMargin(2);
+    layout->setSpacing(0);
+    layout->setMargin(0);
 
 
     QWidget *test = new QWidget;
     test->setLayout(layout);
     this->resize(800, 600);
     this->setCentralWidget(test);
-    this->setPalette(QPalette(BACKGROUND));
-
-
-    //this->setAttribute(Qt::WA_TranslucentBackground);
-    //this->setWindowFlags(Qt::FramelessWindowHint);
 
 }
 
