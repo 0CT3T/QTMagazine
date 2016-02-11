@@ -29,8 +29,7 @@ Q_OBJECT
 
 public:
     addArticle();
-
-
+    addArticle(Article article);
 
 private:
     QLineEdit *TitleEdit;
@@ -40,6 +39,7 @@ private:
     QTreeTheme *TreeView;
     QList<int> listMagazine;
     void initMagazine();
+    void initFrame();
 
 private slots:
     void openModifier();

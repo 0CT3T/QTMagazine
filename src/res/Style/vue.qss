@@ -3,6 +3,12 @@ QTreeTheme {
     color: white 
 }
 
+QTreeWidget::item:selected{
+    background-color: rgba(0,50,200,50%);
+    color: white
+
+}
+
 QTextEdit, QComboBox,QSpinBox{
 	background-color: rgba(50,50,53,100%);
 	color: white 

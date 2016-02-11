@@ -73,6 +73,19 @@ void QTreeTheme::setBackground(QTreeWidgetItem *item, QColor color)
 
 
 /*
+ * SELECT ITEMS
+ *
+*/
+void QTreeTheme::select(QTreeWidgetItem *item, QList<int> list)
+{
+    if(list.contains(item->text(1).toInt())){
+        item->setSelected(true);
+    }
+    for( int i = 0; i < item->childCount(); ++i )
+            select( item->child(i),list );
+}
+
+/*
  * SEARCH IN THE TREEVIEW
  *
 */

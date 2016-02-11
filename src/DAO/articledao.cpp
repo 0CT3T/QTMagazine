@@ -31,6 +31,37 @@ int articledao::addArticle(Article &article)
 }
 
 /*
+ * GET WITH ID
+ *
+*/
+Article articledao::getwithID(int ID)
+{
+    Article *tempm;
+    QSqlDatabase db = QSqlDatabase::database();
+    if(db.open()){
+        QSqlQuery q;
+
+        q.prepare(QLatin1String("SELECT * FROM Article where ID = ? "));
+        q.addBindValue(ID);
+
+        q.exec();
+
+        while (q.next()) {
+                int ID = q.value(0).toInt();
+                QString title = q.value(1).toString();
+                QString description = q.value(2).toString();
+                int page = q.value(3).toInt();
+                int nummag = q.value(4).toInt();
+                tempm = new Article(ID,title,description,page,nummag);
+            }
+        q.exec();
+
+        db.close();
+    }
+    return (*tempm);
+}
+
+/*
  * RECUPERER TOUTES LES DONNEES
  *
 */

@@ -2,7 +2,33 @@
 
 addArticle::addArticle()
 {
+    this->initFrame();
 
+}
+
+addArticle::addArticle(Article article)
+{
+    int i;
+    this->initFrame();
+
+    this->TitleEdit->setText(article.getTitle());
+    this->DescriptionEdit->setPlainText(article.getDescription());
+    this->page->setValue(article.getPage());
+    for(i=0;i < this->listMagazine.size();i++){
+        if(this->listMagazine.at(i)==article.getmagID())
+            break;
+    }
+    this->MagEdit->setCurrentIndex(i);
+
+
+    this->TreeView->select(this->TreeView->invisibleRootItem(),lienthemeDAO::selectAllwithArticle(article.getID()));
+
+
+
+}
+
+void addArticle::initFrame()
+{
     QLabel *ArticleText = new QLabel("Article");
     ArticleText->setAlignment(Qt::AlignHCenter);
     QFont font = ArticleText->font();
@@ -73,6 +99,9 @@ addArticle::addArticle()
     this->resize(1000, 600);
     this->setLayout(back);
 }
+
+
+
 
 void addArticle::initMagazine()
 {

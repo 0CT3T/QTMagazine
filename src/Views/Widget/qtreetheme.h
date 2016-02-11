@@ -16,6 +16,7 @@ Q_OBJECT
 public:
     QTreeTheme();
     void initTreeView();
+    void select(QTreeWidgetItem *item, QList<int> list);
 public slots:
     void search(QString temp);
 private:

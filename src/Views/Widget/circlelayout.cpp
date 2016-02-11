@@ -4,12 +4,12 @@ CircleLayout::CircleLayout()
 {
     scene = new QGraphicsScene(this);
     this->setScene(scene);
+
     this->setFrameShape(QFrame::NoFrame);
 }
 
 void CircleLayout::initlayout(Theme *theme)
 {
-    //this->themes= theme;
     this->parent = theme;
     this->paint();
 }
@@ -39,7 +39,10 @@ void CircleLayout::paint()
         this->scene->addItem(Line);
 
         Article article = temp.at(i);
-        this->ajoutBulle(x2,y2,article.getTitle(),ARTICLECOLOR);
+        CustomEllipse *itemEllipse = new CustomEllipse;
+        itemEllipse->setID(article.getID());
+        this->ajoutBulle(x2,y2,article.getTitle(),ARTICLECOLOR,itemEllipse);
+        QObject::connect(itemEllipse,SIGNAL(keypress(int)),this,SLOT(scenechanged(int)));
     }
 
     for (int i = articlesize; i < size;i++){
@@ -53,12 +56,16 @@ void CircleLayout::paint()
         this->scene->addItem(Line);
 
         Theme theme = tempo.at(i - articlesize);
-        this->ajoutBulle(x2,y2,theme.getName(),THEMECOLOR);
+        CustomEllipse *itemEllipse = new CustomEllipse;
+        itemEllipse->setID(theme.getID());
+        itemEllipse->setName(theme.getName());
+        this->ajoutBulle(x2,y2,theme.getName(),THEMECOLOR,itemEllipse);
+        QObject::connect(itemEllipse,SIGNAL(keypress(int,QString)),this,SLOT(themechange(int,QString)));
 
     }
 
-
-    this->ajoutBulle(x,y,this->parent->getName(),PARENTCOLOR);
+    CustomEllipse *itemEllipse = new CustomEllipse;
+    this->ajoutBulle(x,y,this->parent->getName(),PARENTCOLOR,itemEllipse);
 
 
 
@@ -68,12 +75,21 @@ void CircleLayout::paint()
 
 }
 
-void CircleLayout::scenechanged()
+void CircleLayout::scenechanged(int ID)
 {
-    paint();
+    Article temp = articledao::getwithID(ID);
+    addArticle *w = new addArticle(temp);
+    w->exec();
 }
 
-void CircleLayout::ajoutBulle(float x, float y,QString text,QColor color)
+void CircleLayout::themechange(int ID,QString name)
+{
+    Theme *theme = new Theme(ID,name);
+    this->parent = theme;
+    this->paint();
+}
+
+void CircleLayout::ajoutBulle(float x, float y,QString text,QColor color, CustomEllipse *itemEllipse)
 {
     QGraphicsTextItem * itemText = new QGraphicsTextItem;
     itemText->setPlainText(text);
@@ -84,10 +100,11 @@ void CircleLayout::ajoutBulle(float x, float y,QString text,QColor color)
     whiteEllipse->setBrush(QBrush(WHITE));
     whiteEllipse->setPen(QPen(-1));
 
-    QGraphicsEllipseItem * itemEllipse = new QGraphicsEllipseItem;
+
     itemEllipse->setRect(itemText->x() - SPACE,itemText->y() - SPACE,itemText->boundingRect().width() + 2*SPACE,itemText->boundingRect().height() + 2*SPACE);
     itemEllipse->setBrush(QBrush(color));
     itemEllipse->setPen(QPen(-1));
+
 
     this->scene->addItem(whiteEllipse);
     this->scene->addItem(itemEllipse);

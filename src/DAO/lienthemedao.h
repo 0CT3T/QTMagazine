@@ -13,6 +13,7 @@ public:
     lienthemeDAO();
     static int addLienTheme(LienTheme &lientheme);
     static QList<LienTheme> selectAll();
+    static QList<int> selectAllwithArticle(int ID);
 };
 
 #endif // LIENTHEMEDAO_H

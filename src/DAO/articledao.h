@@ -13,6 +13,7 @@ public:
     articledao();
     static int addArticle( Article &article);
     static QList<Article> selectAll();
+    static Article getwithID(int ID);
 };
 
 #endif // ARTICLEDAO_H

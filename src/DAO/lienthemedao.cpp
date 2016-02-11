@@ -53,3 +53,28 @@ QList<LienTheme> lienthemeDAO::selectAll()
     }
     return temp;
 }
+
+/*
+ * RECUPERER TOUTES LES DONNEES AVEC ARTICLE
+ *
+*/
+QList<int> lienthemeDAO::selectAllwithArticle(int ID)
+{
+    QList<int> temp;
+    QSqlDatabase db = QSqlDatabase::database();
+
+    if(db.open()){
+
+    QSqlQuery q;
+    q.prepare(QLatin1String("SELECT * FROM LienTheme WHERE idArticle = ?"));
+    q.addBindValue(ID);
+    q.exec();
+
+    while (q.next()) {
+            temp.append(q.value(1).toInt());
+        }
+
+    db.close();
+    }
+    return temp;
+}

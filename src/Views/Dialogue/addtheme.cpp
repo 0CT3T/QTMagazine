@@ -2,7 +2,7 @@
 
 AddTheme::AddTheme()
 {
-    QLabel *ArticleText = new QLabel("Article");
+    QLabel *ArticleText = new QLabel("Theme");
     ArticleText->setAlignment(Qt::AlignHCenter);
     QFont font = ArticleText->font();
     font.setBold(true);
