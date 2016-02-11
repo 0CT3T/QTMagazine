@@ -29,6 +29,28 @@ int lienthemeDAO::addLienTheme(LienTheme &lientheme)
 }
 
 /*
+ * DELETE ITEM WITH AN ARTICLE ID
+ *
+*/
+int lienthemeDAO::deleteAllArticle(int ID)
+{
+    QSqlDatabase db = QSqlDatabase::database();
+    if(db.open()){
+        QSqlQuery q;
+
+        q.prepare(QLatin1String("DELETE FROM LienTheme WHERE idArticle = ?"));
+        q.addBindValue(ID);
+
+        q.exec();
+
+        db.close();
+        return ID;
+    }
+    //fail to connect
+    return -1;
+}
+
+/*
  * RECUPERER TOUTES LES DONNEES
  *
 */

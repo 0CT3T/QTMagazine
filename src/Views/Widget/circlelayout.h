@@ -61,6 +61,10 @@ public:
 private slots:
     void scenechanged(int ID);
     void themechange(int ID,QString name);
+    void resize();
+
+ signals:
+    void resizeEvent();
 
 private:
     void paint();
@@ -74,6 +78,13 @@ protected:
     {
         QGraphicsView::mousePressEvent(event);
     }
+
+    void resizeEvent(QResizeEvent *event)
+    {
+        emit resizeEvent();
+    }
+
+
 
 
 };

@@ -6,6 +6,8 @@ CircleLayout::CircleLayout()
     this->setScene(scene);
 
     this->setFrameShape(QFrame::NoFrame);
+    QObject::connect(this,SIGNAL(resizeEvent()),this,SLOT(resize()));
+
 }
 
 void CircleLayout::initlayout(Theme *theme)
@@ -109,4 +111,9 @@ void CircleLayout::ajoutBulle(float x, float y,QString text,QColor color, Custom
     this->scene->addItem(whiteEllipse);
     this->scene->addItem(itemEllipse);
     this->scene->addItem(itemText);
+}
+
+void CircleLayout::resize(){
+    if (this->parent)
+        this->paint();
 }

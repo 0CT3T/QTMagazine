@@ -30,6 +30,33 @@ int articledao::addArticle(Article &article)
     return -1;
 }
 
+
+/*
+ * AJJOUTEZ UN ARTICLE
+ *
+*/
+int articledao::updateArticle(Article &article)
+{
+    QSqlDatabase db = QSqlDatabase::database();
+    if(db.open()){
+        QSqlQuery q;
+
+        q.prepare(QLatin1String("UPDATE Article SET name = ?, description = ?, page = ?,magazine = ? WHERE ID = ?"));
+        q.addBindValue(article.getTitle());
+        q.addBindValue(article.getDescription());
+        q.addBindValue(article.getPage());
+        q.addBindValue(article.getmagID());
+        q.addBindValue(article.getID());
+
+        q.exec();
+
+        db.close();
+        return article.getID();
+    }
+    //fail to connect
+    return -1;
+}
+
 /*
  * GET WITH ID
  *

@@ -38,6 +38,8 @@ private:
     QSpinBox *page;
     QTreeTheme *TreeView;
     QList<int> listMagazine;
+    QPushButton *Modifier;
+    int ID;
     void initMagazine();
     void initFrame();
 
@@ -45,6 +47,7 @@ private slots:
     void openModifier();
     void openArticle();
     void Ajouter();
+    void Update();
 };
 
 #endif // ADDARTICLE_H

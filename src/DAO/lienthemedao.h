@@ -14,6 +14,7 @@ public:
     static int addLienTheme(LienTheme &lientheme);
     static QList<LienTheme> selectAll();
     static QList<int> selectAllwithArticle(int ID);
+    static int deleteAllArticle(int ID);
 };
 
 #endif // LIENTHEMEDAO_H

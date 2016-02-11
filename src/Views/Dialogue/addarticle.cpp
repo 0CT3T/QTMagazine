@@ -3,6 +3,7 @@
 addArticle::addArticle()
 {
     this->initFrame();
+    QObject::connect(this->Modifier, SIGNAL(clicked()), this, SLOT(Ajouter()));
 
 }
 
@@ -23,6 +24,9 @@ addArticle::addArticle(Article article)
 
     this->TreeView->select(this->TreeView->invisibleRootItem(),lienthemeDAO::selectAllwithArticle(article.getID()));
 
+    Modifier->setText("Update");
+    this->ID = article.getID();
+    QObject::connect(this->Modifier, SIGNAL(clicked()), this, SLOT(Update()));
 
 
 }
@@ -58,13 +62,13 @@ void addArticle::initFrame()
 
     //lastgroup->setSpacing(5);
 
-    QPushButton *Modifier = new QPushButton("Ajouter");
+    this->Modifier = new QPushButton("Ajouter");
     QPushButton *AjTheme = new QPushButton("Ajout theme");
     QPushButton *AjMagazine = new QPushButton("Ajout Magazine");
 
     QObject::connect(AjTheme, SIGNAL(clicked()), this, SLOT(openModifier()));
     QObject::connect(AjMagazine, SIGNAL(clicked()), this, SLOT(openArticle()));
-    QObject::connect(Modifier, SIGNAL(clicked()), this, SLOT(Ajouter()));
+
 
     QHBoxLayout *bouton = new QHBoxLayout;
     bouton->addWidget(Modifier);
@@ -165,10 +169,41 @@ void addArticle::Ajouter()
                 lienthemeDAO::addLienTheme(*lientheme);
             }
         }
-        //selection
+
     }
 
     this->close();
+}
 
+void addArticle::Update()
+{
+    Article *articlemod ;
+
+    if (this->TitleEdit->text()!=""
+            && this->DescriptionEdit->toPlainText()!=""
+            && this->listMagazine.at(this->MagEdit->currentIndex())!=0
+            && this->page->value()!=0){
+
+
+        articlemod = new Article(this->ID,this->TitleEdit->text(),this->DescriptionEdit->toPlainText(),this->page->value(),this->listMagazine.at(this->MagEdit->currentIndex()));
+
+        articledao::updateArticle(*articlemod);
+
+        lienthemeDAO::deleteAllArticle(this->ID);
+
+        LienTheme *lientheme;
+
+        if(!this->TreeView->selectedItems().isEmpty()){
+            QList<QTreeWidgetItem*> listWidget = this->TreeView->selectedItems();
+            foreach (QTreeWidgetItem *item, listWidget)
+            {
+                lientheme = new LienTheme(ID,item->text(1).toInt());
+                lienthemeDAO::addLienTheme(*lientheme);
+            }
+        }
+
+    }
+
+    this->close();
 
 }

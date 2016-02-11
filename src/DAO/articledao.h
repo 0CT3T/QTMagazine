@@ -14,6 +14,7 @@ public:
     static int addArticle( Article &article);
     static QList<Article> selectAll();
     static Article getwithID(int ID);
+    static int updateArticle(Article &article);
 };
 
 #endif // ARTICLEDAO_H
