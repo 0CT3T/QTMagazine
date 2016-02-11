@@ -100,6 +100,8 @@ void addArticle::initFrame()
     back->setMargin(0);
     back->setSpacing(0);
 
+    QObject::connect(this->TreeView,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(updatetheme(QTreeWidgetItem*,int)));
+
     this->resize(1000, 600);
     this->setLayout(back);
 }
@@ -206,4 +208,11 @@ void addArticle::Update()
 
     this->close();
 
+}
+
+void addArticle::updatetheme(QTreeWidgetItem* index,int column){
+    Theme theme = ThemeDAO::selectAllwithID(index->text(1).toInt());
+    AddTheme *w = new AddTheme(theme);
+    w->exec();
+    TreeView->initTreeView();
 }

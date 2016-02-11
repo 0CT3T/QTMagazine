@@ -16,6 +16,8 @@ public:
    static QList<Theme> selectAll();
    static QList<Theme> selectAllDepen(int ID);
    static QList<Article> selectAllArticle(int ID);
+   static int updateTheme(Theme &theme);
+   static Theme selectAllwithID(int ID);
 };
 
 #endif // THEMDAO_H

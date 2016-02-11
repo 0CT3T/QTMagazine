@@ -32,7 +32,7 @@ int articledao::addArticle(Article &article)
 
 
 /*
- * AJJOUTEZ UN ARTICLE
+ * UPDATE UN ARTICLE
  *
 */
 int articledao::updateArticle(Article &article)

@@ -21,12 +21,17 @@ Q_OBJECT
 
 public:
     AddTheme();
+    AddTheme(Theme theme);
 
 private slots:
     void add();
+    void update();
 private:
     QLineEdit *NameEdit;
     QTreeTheme *TreeView;
+    QPushButton *button;
+    int ID;
+    void initFrame();
 };
 
 #endif // ADDTHEME_H

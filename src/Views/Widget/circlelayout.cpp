@@ -114,6 +114,6 @@ void CircleLayout::ajoutBulle(float x, float y,QString text,QColor color, Custom
 }
 
 void CircleLayout::resize(){
-    if (this->parent)
+    if (this->parent!=NULL)
         this->paint();
 }

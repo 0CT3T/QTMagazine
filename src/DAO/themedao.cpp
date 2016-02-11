@@ -31,6 +31,60 @@ int ThemeDAO::addTheme(Theme &theme)
     return -1;
 }
 
+/*
+ * UPDATE UN ARTICLE
+ *
+*/
+int ThemeDAO::updateTheme(Theme &theme)
+{
+    QSqlDatabase db = QSqlDatabase::database();
+    if(db.open()){
+        QSqlQuery q;
+
+        q.prepare(QLatin1String("UPDATE THEME SET name = ?, dependance = ? WHERE id = ?"));
+
+        q.addBindValue(theme.getName());
+        q.addBindValue(theme.getDep());
+        q.addBindValue(theme.getID());
+
+        q.exec();
+
+        db.close();
+        return theme.getID();
+    }
+    //fail to connect
+    return -1;
+}
+
+/*
+ * RECUPERER TOUTES LES DONNEES AVEC ID
+ *
+*/
+Theme ThemeDAO::selectAllwithID(int ID)
+{
+    Theme *temp;
+    QSqlDatabase db = QSqlDatabase::database();
+
+    if(db.open()){
+
+    QSqlQuery q;
+    q.prepare(QLatin1String("SELECT * FROM Theme WHERE id = ? "));
+    q.addBindValue(ID);
+    q.exec();
+
+    while (q.next()) {
+            int ID = q.value(0).toInt();
+            QString name = q.value(1).toString();
+            int depID = q.value(2).toInt();
+            temp = new Theme(ID,name,depID);
+
+        }
+
+    db.close();
+    }
+    return *temp;
+}
+
 
 /*
  * RECUPERER TOUTES LES DONNEES

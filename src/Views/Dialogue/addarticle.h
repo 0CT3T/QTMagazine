@@ -48,6 +48,7 @@ private slots:
     void openArticle();
     void Ajouter();
     void Update();
+    void updatetheme(QTreeWidgetItem* index,int column);
 };
 
 #endif // ADDARTICLE_H

@@ -70,7 +70,7 @@ private:
     void paint();
     void ajoutBulle(float x, float y, QString text, QColor color, CustomEllipse *itemEllipse);
 
-    Theme* parent;
+    Theme* parent = NULL;
     QGraphicsScene *scene;
 
 protected:
